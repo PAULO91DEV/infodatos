@@ -1,0 +1,13 @@
+import 'package:infodatos/data/datasources/oauth/oauth_datasource.dart';
+import 'package:infodatos/domain/entities/oauth_entity.dart';
+
+class OAuthMockDataSource implements OAuthDataSource {
+  @override
+  Future<OauthEntity> authentication(String username, String password) {
+    return Future.delayed((Duration(seconds: 2))).then((_) {
+      var response =
+          '{"access_token":"eyJhbGciOiJSUzI1NiIsImtpZCI6IkJBRkZFNjU4NDREMDVEMkQ3MDQ3MTI0OUU4ODk3MTI1MEYxQTk1M0YiLCJ0eXAiOiJhdCtqd3QiLCJ4NXQiOiJ1dl9tV0VUUVhTMXdSeEpKNklseEpROGFsVDgifQ.eyJuYmYiOjE2MTM0ODQ1NzcsImV4cCI6MTYxMzQ4ODE3NywiaXNzIjoiaHR0cDovL2F1dGhlbnRpY2F0aW9uMi5pbWV2by5uZXQiLCJhdWQiOlsiYWR2ZXJ0aXNpbmdfYXBpIiwiZGV2aWNlX2FwaSIsInJlZ2lzdGVyX3VzZXJfYXBpIiwiaW5mb2RhdG9zX2FwaSJdLCJjbGllbnRfaWQiOiJhZHZlcnRpc2luZy1jbGllbnQiLCJjbGllbnRfY29tcGFueSI6IkZJTkFOQ0UiLCJqdGkiOiIyczZuWUNjdDdKOFJmUnA3NUktMDh3Iiwic2NvcGUiOlsiYWR2ZXJ0aXNpbmdfYWRtaW4iLCJhZHZlcnRpc2luZ19yZWFkIiwiYWR2ZXJ0aXNpbmdfdmlld2VyIiwiZGV2aWNlX2FjdGl2YXRlIiwiZGV2aWNlX2FkbWluIiwiZGV2aWNlX3JlYWQiLCJmaW5hbmNlX3RvdGVtIiwiaW5mb2RhdG9zX2FkbWluIiwiaW5mb2RhdG9zX3JlYWQiXX0.HxmhmJjElr_pkLYr4ZDJb6t6z_YnnrRB4qFpfPmZgnnmT3Z2__Dxh3_40wcx3-0YtvSubuEc0lA5Y-z6cZgjWI08oXxWYsZr3pOrWmBTNOiBKPrFEk9TghY6bbFGVCtAYYWWEKzKeCJGK8RDugaxMIr_qW3LXBtXSjuKzH5D3C7lCPVdz-mtdtQXvaSf2j8g62GOZo7YCehx3C8EcZR-Sb3avQ4uKZyKpE0tkWysPC8EnamNNHkeUKIIF6VyGf-nqYnyRY2AZG59SX2qkRXHpNwQbOn7OFbaF0svcMUy1T7-Z6hPjaGCca9wFsWqYd7ouTwph0IWza2b3QOZxVGFig","expires_in":3600,"token_type":"Bearer","scope":"advertising_admin advertising_read advertising_viewer device_activate device_admin device_read finance_totem infodatos_admin infodatos_read openid profile"}';
+      return oauthEntityFromJson(response);
+    });
+  }
+}
